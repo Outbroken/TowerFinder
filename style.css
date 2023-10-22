@@ -1,0 +1,271 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Rubik-Regular';
+    src: url('Fonts/Rubik/Rubik-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Variables */
+
+:root {
+    --Core-Font: 'Rubik-Regular';
+
+    --Text-Colour: #ffffff;
+    --Background-Colour: #0f1015;
+    --Primary-Colour: #00e5ff;
+    --Secondary-Colour: #1e202a;
+    --Accent-Colour: #d8683b;
+}
+
+/* Media Queries */
+
+@media (max-width: 400px) {
+    #towerList {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 600px)
+{
+    .titleImage {
+        visibility: collapse;
+    }
+}
+
+@media (min-width: 800px) {
+    .titleImage {
+        visibility: visible;
+    }
+}
+
+@media (min-width: 1100px) { 
+    #towerList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1650px) {
+    #towerList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Styling */
+
+html {
+    background-color: var(--Background-Colour);
+
+    height: 100%;
+}
+
+
+#Topbar {
+    display: flex;
+
+    z-index: 2;
+    position: fixed;
+
+    top: 0%;
+    left: 0%;
+
+    width: 100%;
+    height: 5.5em;
+
+    background-color: var(--Background-Colour) * #00000070;
+    backdrop-filter: blur(6px);
+
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+}
+
+.titleImage {
+    position: relative;
+
+    left: 0.8em;
+    top: 10%;
+    height: 75%;
+
+    border-radius: 50%;
+}
+
+#Search {
+    z-index: 3;
+    position: relative;
+
+    top: 0.55em;
+    left: 0.75em;
+
+    max-width: 30em;
+    width: 60%;
+
+    height: 55%;
+
+    border-radius: 1000px;
+    border: none;
+
+    padding-left: 0.5em;
+
+    background: var(--Secondary-Colour);
+    box-shadow: 0 0px 0.4em 0 var(--Accent-Colour);
+
+    font-family: var(--Core-Font);
+    font-size: 200%;
+    color: #ffffff8e;
+
+    transition: 0.15s;
+}
+
+#Search:hover {
+    box-shadow: 0 0px 0.7em 0 var(--Primary-Colour);
+}
+
+#Search:focus {
+    color: var(--Text-Colour);
+}
+
+.flipButton {
+    position: absolute;
+
+    right: 2%;
+    top: 10%;
+    width: 5em;
+    height: 5em;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--Secondary-Colour);
+    box-shadow: 0 0px 0.8em 0 var(--Accent-Colour);
+}
+
+.flipButton:hover {
+    box-shadow: 0 0px 1.5em 0 var(--Primary-Colour);
+
+    transition: 0.3s
+}
+
+.flipButton:active {
+    box-shadow: 0 0px 0.5em 0 var(--Primary-Colour);
+    background-color: var(--Primary-Colour);
+
+    transition: 0.3s
+}
+
+.flipButton img {
+    position: relative;
+
+    top: 5%;
+    height: 60%;
+
+    filter:invert();
+}
+
+
+#towerList {
+    position: absolute;
+    z-index: 0;
+
+    top: 12%;
+    left: 1em;
+
+    display: grid;
+    gap: 3rem;
+}
+
+
+.towerCard {
+    height: 8em;
+    width: 32em;
+
+    margin-bottom: 1em;
+    position: relative;
+
+    perspective: 3000px;
+}
+
+.towerCard__inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 1.25s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.towerCard__inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+
+.towerCard__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+    
+    background-color: var(--Secondary-Colour);
+    border-radius: 0.5em;
+
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+}
+
+.towerCard__face--back {
+    transform: rotateY(180deg);
+}
+
+
+.towerType {
+    font-family: var(--Core-Font);
+    font-size: 1.5em;
+    color: rgba(255, 255, 255, 0.473);
+
+    margin-top: 4%;
+
+    left: 3%;
+    position: relative;
+
+    user-select: none;
+}
+
+.towerTitle {
+    font-family: var(--Core-Font);
+    font-size: 2.5em;
+    color: var(--Text-Colour);
+
+    bottom: 17%;
+
+    left: 3%;
+    position: relative;
+
+    user-select: none;
+}
+
+.towerLocation {
+    font-family: var(--Core-Font);
+    font-size: 2em;
+    color: var(--Text-Colour);
+
+    margin-left: 3%;
+    margin-top: 3%;
+
+    text-align: left;
+
+    user-select: none;
+}
+
+.towerDifficulty {
+    font-family: var(--Core-Font);
+    font-size: 2em;
+    color: var(--Text-Colour);
+
+    margin-left: 3%;
+    text-align: left;
+
+    user-select: none;
+}
+
+#blankList {
+    width: 0;
+    height: 0;
+}
